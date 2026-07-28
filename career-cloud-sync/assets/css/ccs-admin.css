@@ -1,0 +1,312 @@
+/*
+ * Career Cloud Sync — Admin Design System
+ * Palette grounded in Google's own Material colors, since every page
+ * here is about a Google Drive/Sheets connection. Scoped under .ccs-wrap
+ * so nothing leaks into the rest of wp-admin.
+ */
+
+.ccs-wrap {
+    --ccs-blue:    #4285F4;
+    --ccs-blue-dark: #1A56C4;
+    --ccs-green:   #1E8E3E;
+    --ccs-green-bg: #E6F4EA;
+    --ccs-red:     #D93025;
+    --ccs-red-bg:  #FCE8E6;
+    --ccs-yellow:  #F9AB00;
+    --ccs-gray-bg: #F6F8FC;
+    --ccs-border:  #DADCE0;
+    --ccs-text:    #202124;
+    --ccs-muted:   #5F6368;
+    --ccs-shadow:  0 1px 2px rgba(60,64,67,.30), 0 1px 3px 1px rgba(60,64,67,.15);
+    --ccs-shadow-hover: 0 1px 3px rgba(60,64,67,.30), 0 4px 8px 3px rgba(60,64,67,.15);
+    --ccs-radius:  12px;
+
+    max-width: none;
+    margin-right: 20px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--ccs-text);
+}
+
+.ccs-wrap h1 {
+    display: none; /* replaced by .ccs-hero */
+}
+
+/* ---------- Hero bar ---------- */
+.ccs-hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    background: #fff;
+    border: 1px solid var(--ccs-border);
+    border-radius: var(--ccs-radius);
+    box-shadow: var(--ccs-shadow);
+    padding: 20px 24px;
+    margin: 20px 0 24px;
+}
+
+.ccs-hero-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.ccs-hero-logo {
+    width: 34px;
+    height: 34px;
+    flex: none;
+}
+
+.ccs-hero-title {
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.ccs-hero-subtitle {
+    font-size: 13px;
+    color: var(--ccs-muted);
+    margin: 2px 0 0;
+}
+
+/* ---------- Status pill ---------- */
+.ccs-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+.ccs-pill-dot { width: 8px; height: 8px; border-radius: 50%; flex: none; }
+
+.ccs-pill-green { background: var(--ccs-green-bg); color: var(--ccs-green); }
+.ccs-pill-green .ccs-pill-dot { background: var(--ccs-green); }
+
+.ccs-pill-red { background: var(--ccs-red-bg); color: var(--ccs-red); }
+.ccs-pill-red .ccs-pill-dot { background: var(--ccs-red); }
+
+.ccs-pill-gray { background: #F1F3F4; color: var(--ccs-muted); }
+.ccs-pill-gray .ccs-pill-dot { background: #9AA0A6; }
+
+/* ---------- Cards / grid ---------- */
+.ccs-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 20px;
+    align-items: start;
+}
+.ccs-col-4  { grid-column: span 4; }
+.ccs-col-8  { grid-column: span 8; }
+.ccs-col-12 { grid-column: span 12; }
+
+@media (max-width: 960px) {
+    .ccs-col-4, .ccs-col-8 { grid-column: span 12; }
+}
+
+.ccs-card {
+    background: #fff;
+    border: 1px solid var(--ccs-border);
+    border-radius: var(--ccs-radius);
+    box-shadow: var(--ccs-shadow);
+    transition: box-shadow .15s ease;
+}
+.ccs-card:hover { box-shadow: var(--ccs-shadow-hover); }
+
+.ccs-card-header {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--ccs-border);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: .01em;
+}
+
+.ccs-card-body { padding: 20px; }
+
+.ccs-eyebrow {
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .06em;
+    color: var(--ccs-muted);
+    margin: 0 0 4px;
+}
+
+/* ---------- Form fields ---------- */
+.ccs-wrap .form-table th { font-weight: 500; color: var(--ccs-text); padding-left: 0; }
+.ccs-wrap input[type="text"],
+.ccs-wrap input[type="password"],
+.ccs-wrap input[type="number"],
+.ccs-wrap input[type="search"] {
+    border: 1px solid var(--ccs-border);
+    border-radius: 8px;
+    padding: 8px 12px;
+    box-shadow: none;
+    transition: border-color .15s ease, box-shadow .15s ease;
+}
+.ccs-wrap input:focus {
+    border-color: var(--ccs-blue);
+    box-shadow: 0 0 0 3px rgba(66,133,244,.15);
+    outline: none;
+}
+
+.ccs-wrap .button-primary {
+    background: var(--ccs-blue);
+    border-color: var(--ccs-blue-dark);
+    border-radius: 8px;
+    font-weight: 600;
+    box-shadow: none;
+    text-shadow: none;
+}
+.ccs-wrap .button-primary:hover { background: var(--ccs-blue-dark); }
+
+.ccs-wrap .button-secondary {
+    border-radius: 8px;
+    border-color: var(--ccs-border);
+    color: var(--ccs-text);
+    font-weight: 500;
+}
+
+/* ---------- Modern table (Folder Mapping / Logs) ---------- */
+.ccs-table-card { overflow: hidden; }
+.ccs-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+.ccs-table thead th {
+    background: var(--ccs-gray-bg);
+    text-align: left;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    color: var(--ccs-muted);
+    font-weight: 600;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--ccs-border);
+}
+.ccs-table tbody td {
+    padding: 10px 16px;
+    border-bottom: 1px solid #F1F3F4;
+    vertical-align: middle;
+}
+.ccs-table tbody tr:last-child td { border-bottom: none; }
+.ccs-table tbody tr:hover { background: var(--ccs-gray-bg); }
+
+.ccs-table select,
+.ccs-table input[type="text"] { width: 100%; }
+
+.ccs-icon-btn {
+    background: none;
+    border: 1px solid var(--ccs-border);
+    border-radius: 8px;
+    width: 32px;
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--ccs-red);
+    transition: background .15s ease;
+}
+.ccs-icon-btn:hover { background: var(--ccs-red-bg); }
+
+/* ---------- Tabs ---------- */
+.ccs-tabs {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--ccs-border);
+}
+.ccs-tab {
+    display: inline-block;
+    padding: 10px 18px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ccs-muted);
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    transition: color .15s ease, border-color .15s ease;
+}
+.ccs-tab:hover { color: var(--ccs-text); }
+.ccs-tab.is-active {
+    color: var(--ccs-blue);
+    border-bottom-color: var(--ccs-blue);
+    font-weight: 600;
+}
+.ccs-tab.is-disabled {
+    color: #B0B4B9;
+    cursor: not-allowed;
+    position: relative;
+}
+.ccs-tab.is-disabled:hover { color: #B0B4B9; }
+.ccs-tab-panel { display: none; }
+.ccs-tab-panel.is-active { display: block; }
+
+/* ---------- Select dropdowns (Folder Mapping job select) ---------- */
+.ccs-wrap select,
+.ccs-table select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border: 1px solid var(--ccs-border);
+    border-radius: 8px;
+    padding: 8px 32px 8px 12px;
+    font-size: 13px;
+    color: var(--ccs-text);
+    background-color: #fff;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%235F6368' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-size: 16px;
+    cursor: pointer;
+    transition: border-color .15s ease, box-shadow .15s ease;
+}
+
+.ccs-wrap select:focus {
+    border-color: var(--ccs-blue);
+    box-shadow: 0 0 0 3px rgba(66,133,244,.15);
+    outline: none;
+}
+
+.ccs-wrap select:hover {
+    border-color: #B0B4B9;
+}
+
+.ccs-tab:focus,
+.ccs-tab:focus-visible {
+    outline: none;
+    box-shadow: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+}
+
+.ccs-tab.is-active:focus,
+.ccs-tab.is-active:focus-visible {
+    border-bottom-color: var(--ccs-blue);
+}
+
+.ccs-log-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+.ccs-log-dot.ccs-dot-green  { background: var(--ccs-green); }
+.ccs-log-dot.ccs-dot-red    { background: var(--ccs-red); }
+.ccs-log-dot.ccs-dot-yellow { background: var(--ccs-yellow); }
+
+.ccs-log-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 16px;
+}

@@ -1,23 +1,16 @@
 <?php
 /**
  * Plugin Name: Career Cloud Sync
- * Description: Automatically sync job applications, resumes, and attachments to Google Drive, Google Sheets, and other cloud services.
+ * Plugin URI: https://iimcip.org/
+ * Description: Automatically sync Contact Form 7 job applications with Google Drive and Google Sheets.
  * Version: 1.0.0
- * Requires at least: 6.0
- * Requires PHP: 5.0
- * Author: Your IIMCIP
+ * Requires at least: 6.2
+ * Requires PHP: 7.4
+ * Author: IIMCIP
  * Author URI: https://iimcip.org/
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: career-cloud-sync
- * Domain Path: /languages
- * Network: false
- *
- * Career Cloud Sync is a WordPress plugin that automates job application
- * workflows by syncing applicant information, resumes, and uploaded files
- * with cloud services such as Google Drive and Google Sheets. Designed for
- * recruiters, HR teams, and businesses, it provides secure, reliable, and
- * extensible integrations for managing recruitment data.
  */
 
 defined('ABSPATH') || exit;
@@ -39,11 +32,15 @@ final class Career_Cloud_Sync {
         require_once CCS_PATH . 'includes/integrations/class-cf7-apply-form.php';
         $CCS_CF7 = new CCS_CF7();
 
+        require_once CCS_PATH . 'includes/folder-mapping.php';
+
+        require_once CCS_PATH . 'includes/class-log-viewer.php';
+        $CCS_Log_Viewer = new CCS_Log_Viewer();
+
+
         require_once CCS_PATH . 'includes/class-admin.php';
         $CCS_Admin = new CCS_Admin();
 
-        require_once CCS_PATH . 'includes/class-folder-mapping.php';
-        $CCS_Folder_Mapping = new CCS_Folder_Mapping();
     }
 
     private function define_constants()

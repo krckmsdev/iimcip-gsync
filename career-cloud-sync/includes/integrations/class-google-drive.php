@@ -27,10 +27,10 @@ class CCS_Google_Drive {
         return isset($s['refresh_token']) ? $s['refresh_token'] : '';
     }
 
-    private static function parent_folder_id() {
-        $s = self::settings();
-        return isset($s['parent_folder_id']) ? $s['parent_folder_id'] : '';
-    }
+    // private static function parent_folder_id() {
+    //     $s = self::settings();
+    //     return isset($s['parent_folder_id']) ? $s['parent_folder_id'] : '';
+    // }
 
     // ==================================================================
     // FILL THESE IN — replace with your real values for testing.
@@ -50,6 +50,7 @@ class CCS_Google_Drive {
      * Cached per-request so we don't call this twice in one submission.
      */
     public static function get_access_token() {
+
         if (self::$access_token) {
             return self::$access_token;
         }
@@ -86,12 +87,13 @@ class CCS_Google_Drive {
      * Returns the new folder's ID, or false on failure.
      */
     public static function create_folder($folder_name, $parent_id = null) {
+
         $access_token = self::get_access_token();
         if (!$access_token) {
             return false;
         }
 
-        $parent = $parent_id ? $parent_id : self::parent_folder_id();
+        $parent = $parent_id ? $parent_id : false;
 
         $response = wp_remote_post('https://www.googleapis.com/drive/v3/files', array(
             'timeout' => 20,
@@ -128,6 +130,7 @@ class CCS_Google_Drive {
      * Uses multipart upload — no external library needed.
      */
     public static function upload_file($file_path, $file_name, $folder_id) {
+
         $access_token = self::get_access_token();
         if (!$access_token) {
             return false;
@@ -189,6 +192,7 @@ class CCS_Google_Drive {
      * independent of WP_DEBUG.
      */
     public static function log($message) {
+
         $upload_dir = wp_upload_dir();
         $log_dir    = trailingslashit($upload_dir['basedir']) . 'cf7-attachment-logs/';
 
